@@ -4,3 +4,8 @@ export function setPageTitle (data) {
       dispatch({ type: 'SET_PAGE_TITLE', data: data })
     }
   }
+export function setInfoList(data){
+    return (dispatch,getState) => {
+      dispatch({ type: 'SET_INFO_LIST', data: data })
+  }
+}

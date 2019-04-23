@@ -1,5 +1,5 @@
 /*
- * Created by jhuang on 2019-03-28
+ * created by jhuang on 2019-03-28
 */
 // applyMiddleware: redux通过该函数来使用中间件
 // createStore: 用于创建store实例

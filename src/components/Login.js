@@ -2,7 +2,7 @@ import React from 'react'
 // connect方法的作用：将额外的props传递给组件，并返回新的组件，组件在该过程中不会受到影响
 import { connect } from 'react-redux'
 // 引入action
-import { setPageTitle } from '../redux/actions.js'
+import { setPageTitle,setInfoList } from '../redux/actions.js'
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -12,28 +12,34 @@ class Login extends React.Component {
   }
 
   componentDidMount () {
-    let { setPageTitle } = this.props;
-    // 触发setPageTitle action
+    // console.log(this.props)
+    let { setPageTitle,setInfoList } = this.props;
+    // 触发setPageTitle 
     setPageTitle('Huang Jian')
+    let array = [
+       { name:'jhuang'}
+    ]
+    setInfoList(array)
   }
 
   render () {
     // 从props中解构store
-    let { pageTitle, infoList } = this.props
+    let { pageTitle, infoList } = this.props;
+    // console.log(this.props)
+    const lis = infoList.map((item,index) => {
+      return   <li key={index}>{item.name}</li>
+   })
     // 使用store
     return (
       <div>
         <h1>{pageTitle}</h1>
         {
-            infoList.length > 0 ? (
+            infoList.length > 0 &&
                 <ul>
                     {
-                        infoList.map((item) => {
-                            <li>{item.name}</li>
-                        })
+                       lis
                     }
                 </ul>
-            ):null
         }
       </div>
     )
@@ -60,6 +66,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         /*dispatch((dispatch, getState) => {
             dispatch({ type: 'SET_PAGE_TITLE', data: data })
         )*/
+    },
+    setInfoList(data){
+      dispatch(setInfoList(data))
     }
   }
 }
