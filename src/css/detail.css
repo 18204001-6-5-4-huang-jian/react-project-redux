@@ -2,6 +2,11 @@
     width: 100%;
     overflow: hidden;
 }
+#container{
+  width: 500px;
+  height: 500px;
+  margin: 10px auto;
+}
 .ant-advanced-search-form {
   padding: 24px;
   background: #fbfbfb;
@@ -13,4 +18,8 @@
 }
 .ant-advanced-search-form .ant-form-item-control-wrapper {
   flex: 1;
+}
+.ant-form.ant-form-horizontal{
+  width:800px;
+  margin:10px auto;
 }

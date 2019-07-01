@@ -27,11 +27,11 @@
 	color: #ffffff;
 	border: 1.5px solid #ffffff;
 	cursor: pointer;
-	border-radius: 40%;
+	border-radius:5px;
 	margin:0 10px;
 }
 .home-header-toggle-btn.active{
-	color:deeppink;
+	color:deepskyblue;
 	font-weight: bold;
 }
 .home-header-popver{

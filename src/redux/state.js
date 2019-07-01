@@ -1,7 +1,8 @@
-export default {
-    pageTitle: 'JAMES',
+export default {  
+    pageTitle: 'jhuang',
     infoList: [
-        {name:'哈哈'},
-        {name:'嘻嘻'}
+        {name:'AAA'},
+        {name:'BBB'},
+        {name:'CCC'}
     ]
 }

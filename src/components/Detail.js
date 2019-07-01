@@ -1,4 +1,5 @@
 import React from 'react'
+// import ReactHighstock from 'react-highcharts/ReactHighstock.src'
 import { Progress, Form, Row, Col, Input, Button, Icon } from 'antd';
 import moment from 'moment'
 import dayjs from 'dayjs'
@@ -6,10 +7,13 @@ import Highcharts from 'highcharts'
 import '../css/detail.css'
 const FormItem = Form.Item
 @Form.create()
-class Detail extends React.Component {
+export default class Detail extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            text: '',
+            number:80,
+            obj:{1:'react'},
             chartConfig: {
                 credits: {
                     enabled: false
@@ -77,17 +81,17 @@ class Detail extends React.Component {
                 name: 'jhuang',
                 age: 18
             },
-            text: '',
             expand: false
         }
     }
     componentDidMount() {
-        //console.log(this.props.match.params.id);
+        // console.log(this.props);
+        // console.log(this.props.match.params.id);
         let now = new Date().getTime();
         console.log(moment(now).format('YYYY-MM-DD HH:mm:ss'));
         console.log(dayjs(now).format('YYYY-MM-DD HH:mm:ss'));
         this.setState({
-            text: moment(now).format('YYYY-MM-DD HH:mm:ss')
+            text: moment(now).format('YYYY-MM-DD HH:mm')
         })
         Highcharts.chart('container',
             this.state.chartConfig
@@ -143,16 +147,20 @@ class Detail extends React.Component {
     }
     render() {
         const rawHTML = {
-            __html: "<h1>非DOM属性:dangerouslySetInnerHTML标签</h1>"
-        }
+            __html: "<h2>非DOM属性:dangerouslySetInnerHTML标签</h2>"
+        };
+        const li = Object.keys(this.state.obj).map((item,index) => {
+            return <li key={index}>{this.state.obj[item]}</li>
+        })
         return (
             <div className='detail-container'>
+            {/* <ul>{li}</ul> */}
                 <div dangerouslySetInnerHTML={rawHTML} onClick={this.changeInfo}></div>
                 <div style={{ fontSize: '20px', color: 'red' }}>{this.state.text}</div>
                 <div className='detail-chart'>
                     <div id="container"></div>
                 </div>
-                <Progress type="circle" percent={50} />
+                <Progress type="circle" percent={this.state.number} />
                 <Form
                     className="ant-advanced-search-form"
                     onSubmit={this.handleSearch}
@@ -172,4 +180,3 @@ class Detail extends React.Component {
         )
     }
 }
-export default Detail

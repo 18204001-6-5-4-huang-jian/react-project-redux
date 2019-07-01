@@ -1,9 +1,8 @@
 // combineReducers, 工具函数，用于组织多个reducer，并返回reducer集合
 import { combineReducers } from 'redux'
 // 获取默认值
-import defaultState from './state.js'
+import  defaultState from './state.js'
 console.log(defaultState)
-
 // 一个reducer就是一个函数
 function pageTitle (state = defaultState.pageTitle, action) {
   // 不同的action有不同的处理逻辑

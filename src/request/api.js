@@ -62,7 +62,7 @@ export const userLogin = function (userinfo) {
   return instance.request({
     method: 'POST',
     url: '/v1/account/login',
-    data: qs.stringify(userinfo)
+    data: qs.stringify(userinfo) //json
   })
 }
 

@@ -1,25 +1,31 @@
 import React, { Component } from 'react'
+// 路由依赖
 import { Switch, Route } from 'react-router-dom'
 import './App.css'
-//引入组件
-import Login from './components/Login'
-import Home from './components/Home'
-import Detail from './components/Detail'
-import Hierarchy from './components/Hierarchy'
+// 异步组件
+import AsyncComponent from './components/asyncComponent.js';
 // Provider是react-redux两个核心工具之一，作用：将store传递到每个项目中的组件中
 import { Provider } from 'react-redux'
 import store from './redux/index.js'
+const Login = AsyncComponent(() => import('./components/Login.js'));
+const Home = AsyncComponent(() => import('./components/Home.js'));
+const Detail = AsyncComponent(() => import('./components/Detail.js'));
+const Hierarchy = AsyncComponent(() => import('./components/Hierarchy.js'));
+const Dashboard = AsyncComponent(() => import('./components/Dashboard.js'));
+const Errorpage = AsyncComponent(() => import('./components/Errorpage.js'));
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Provider  store = {store}>
+        <Provider store = {store}>
           <Switch>
             <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/detail/:id" component={Detail} />
             <Route path="/hierarchy" component={Hierarchy} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route  component={Errorpage} />
           </Switch>
         </Provider>
       </div>
