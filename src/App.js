@@ -3,16 +3,18 @@ import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import './App.css'
 // 异步组件
-import AsyncComponent from './components/asyncComponent.js';
+import AsyncComponent from './components/asyncComponent.jsx';
 // Provider是react-redux两个核心工具之一，作用：将store传递到每个项目中的组件中
 import { Provider } from 'react-redux'
-import store from './redux/index.js'
-const Login = AsyncComponent(() => import('./components/Login.js'));
-const Home = AsyncComponent(() => import('./components/Home.js'));
-const Detail = AsyncComponent(() => import('./components/Detail.js'));
-const Hierarchy = AsyncComponent(() => import('./components/Hierarchy.js'));
-const Dashboard = AsyncComponent(() => import('./components/Dashboard.js'));
-const Errorpage = AsyncComponent(() => import('./components/Errorpage.js'));
+// 引入store
+import store from './store/index.js'
+// 按需引入组件
+const Login = AsyncComponent(() => import('./components/Login.jsx'));
+const Home = AsyncComponent(() => import('./components/Home.jsx'));
+const Detail = AsyncComponent(() => import('./components/Detail.jsx'));
+const Hierarchy = AsyncComponent(() => import('./components/Hierarchy.jsx'));
+const Dashboard = AsyncComponent(() => import('./components/Dashboard.jsx'));
+const Errorpage = AsyncComponent(() => import('./components/Errorpage.jsx'));
 class App extends Component {
   render() {
     return (
